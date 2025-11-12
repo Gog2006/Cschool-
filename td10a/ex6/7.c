@@ -5,10 +5,11 @@
 char* entreeUtilisateur(int taille) {
   char* buffer = malloc(taille * sizeof *buffer);
   if (buffer == NULL) {
-    fprintf(stderr, "Erreur allocation mémoire échouée\n");
+    fprintf(stderr, "Vous avez depasse la taille maximale definie par vous \n");
     exit(1);
   }
-  printf("%s", "Entrez une chaîne de caractères (max 127 caracteres) : ");
+
+  printf("Entrez une chaîne de caractères (max %d caracteres) : ", taille);
   if (fgets(buffer, taille, stdin) == NULL) {
     fprintf(stderr, "Erreur lecture entrée utilisateur\n");
     free(buffer);
@@ -18,7 +19,15 @@ char* entreeUtilisateur(int taille) {
 }
 
 int main() {
-  int taille = 128;
+  int taille;
+  printf("Entrez la taille maximale de la chaine  : ");
+  if (scanf("%d", &taille) != 1 ) {
+    fprintf(stderr, "Erreur: taille invalide\n");
+    exit(1);
+  }
+  
+  scanf("%*c");
+  
   char* buffer = entreeUtilisateur(taille);
   char* copie = strdup(buffer);
 

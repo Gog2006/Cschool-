@@ -3,20 +3,16 @@
 
 int main() {
   int taille;
-  
   printf("Entrez la taille du tableau : ");
   if (scanf("%d", &taille) != 1 || taille <= 0) {
     fprintf(stderr, "Erreur: taille invalide\n");
     return 1;
   }
-
   int *tableau = malloc(taille * sizeof *tableau);
   if (tableau == NULL) {
     fprintf(stderr, "Erreur: allocation mémoire échouée\n");
     return 1;
   }
-
-  /* Saisie des valeurs */
   for (int i = 0; i < taille; i++) {
     printf("Entrez la valeur pour l'élément %d: \n", i);
     if (scanf("%d", &tableau[i]) != 1) {
@@ -25,8 +21,6 @@ int main() {
       return 1;
     }
   }
-
-  /* Affichage du tableau */
   printf("{");
   for (int i = 0; i < taille; i++) {
     printf("%d", tableau[i]);
@@ -35,8 +29,6 @@ int main() {
     }
   }
   printf("}\n");
-
-  /* Libération de la mémoire */
   free(tableau);
 
   return 0;

@@ -1,42 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-  int taille;
-  
-  printf("Entrez la taille du tableau : ");
-  if (scanf("%d", &taille) != 1 || taille <= 0) {
-    fprintf(stderr, "Erreur: taille invalide\n");
-    return 1;
-  }
 
+int *tableauScanfTaille(int taille) {
   int *tableau = malloc(taille * sizeof *tableau);
   if (tableau == NULL) {
-    fprintf(stderr, "Erreur: allocation mémoire échouée\n");
-    return 1;
+    fprintf(stderr, "Erreur allocation mémoire échouée\n");
+    exit(1);
   }
-
-  /* Saisie des valeurs */
-  for (int i = 0; i < taille; i++) {
+  for (int i = 1; i < taille+1; i++) {
     printf("Entrez la valeur pour l'élément %d: \n", i);
     if (scanf("%d", &tableau[i]) != 1) {
-      fprintf(stderr, "Erreur: valeur invalide\n");
+      fprintf(stderr, "Erreur valeur invalide\n");
       free(tableau);
-      return 1;
+      exit(1);
     }
   }
-
-  /* Affichage du tableau */
-  printf("{");
+  return tableau;
+}
+void afficherTab(int* tab, int taille) {
+    printf("{");
   for (int i = 0; i < taille; i++) {
-    printf("%d", tableau[i]);
+    printf("%d", tab[i]);
     if (i < taille - 1) {
       printf(", ");
     }
   }
   printf("}\n");
+}
 
-  /* Libération de la mémoire */
+
+int main() {
+  int taille = 5;
+  printf("Entrez les elements: \n");
+  int* tableau = tableauScanfTaille(taille);
+  afficherTab(tableau, taille);
+
   free(tableau);
 
   return 0;

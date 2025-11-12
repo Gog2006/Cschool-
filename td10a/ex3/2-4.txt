@@ -1,0 +1,3 @@
+2- cette programme  prend la taille et envoi les carres de 1 jusqa taille-1
+3- la probleme avec ce code est dans memoire attribue elle nest pas liberee
+4- on utilise la fonction free

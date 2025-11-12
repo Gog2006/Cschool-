@@ -1,2 +1,0 @@
-# Cschool-
-c 

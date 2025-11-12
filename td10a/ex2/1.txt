@@ -1,0 +1,3 @@
+Allocation statique : la taille et l'emplacement de la mémoire 
+sont décidés à la compilation ou l'instanciation 
+Allocation dynamique : la mémoire est demandée à l'exécution
